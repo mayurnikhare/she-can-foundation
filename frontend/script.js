@@ -21,22 +21,15 @@ themeBtn.addEventListener("click", () => {
 
   document.body.classList.toggle("dark");
 
-  // Change Icon
-
-  if(document.body.classList.contains("dark")){
-
-    themeBtn.innerHTML = "☀️";
-
-  }else{
-
-    themeBtn.innerHTML = "🌙";
-
-  }
+  themeBtn.innerHTML =
+  document.body.classList.contains("dark")
+  ? "☀️"
+  : "🌙";
 
 });
 
 /* =========================
-   Toast Function
+   Toast
 ========================= */
 
 function showToast(message){
@@ -79,113 +72,54 @@ function showSuccess(message){
 
 form.addEventListener("submit", async (e) => {
 
-  // Prevent Reload
-
   e.preventDefault();
 
-  // Form Values
-
   const name =
-  document.getElementById("name")
-  .value
-  .trim();
+  document.getElementById("name").value.trim();
 
   const email =
-  document.getElementById("email")
-  .value
-  .trim();
+  document.getElementById("email").value.trim();
 
   const message =
-  document.getElementById("message")
-  .value
-  .trim();
+  document.getElementById("message").value.trim();
 
   /* =========================
      Validation
   ========================= */
 
-  // Name Validation
-
-  if(name === ""){
-
+  if(!name){
     showToast("Name is required");
-
     return;
-
   }
 
   if(name.length < 3){
-
-    showToast(
-      "Name must be at least 3 letters"
-    );
-
+    showToast("Name must be at least 3 letters");
     return;
-
   }
-
-  // Only Letters Validation
 
   const nameRegex = /^[A-Za-z ]+$/;
 
   if(!nameRegex.test(name)){
-
-    showToast(
-      "Name should contain only letters"
-    );
-
+    showToast("Only letters allowed in name");
     return;
-
   }
 
-  // Email Validation
-
-  if(email === ""){
-
+  if(!email){
     showToast("Email is required");
-
     return;
-
   }
-
-  // Strong Email Regex
 
   const emailRegex =
   /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
-  // Invalid Email
-
   if(!emailRegex.test(email)){
-
-    showToast("Enter Valid Email");
-
+    showToast("Enter valid email");
     return;
-
   }
 
-  // Extra Domain Check
-
-  const domainPart =
-  email.split(".").pop();
-
-  if(domainPart.length < 2){
-
-    showToast(
-      "Invalid Email Domain"
-    );
-
-    return;
-
-  }
-
-  // Message Validation
-
-  if(message === ""){
-
+  if(!message){
     showToast("Message is required");
-
     return;
-
   }
 
   /* =========================
@@ -193,59 +127,53 @@ form.addEventListener("submit", async (e) => {
   ========================= */
 
   submitBtn.innerText = "Sending...";
-
   submitBtn.disabled = true;
 
   try{
 
-    // API Request
-
-    const response = await fetch(
+    const response =
+    await fetch(
       "https://she-can-foundation-1-38gf.onrender.com/api/contact",
       {
-
         method:"POST",
-
         headers:{
           "Content-Type":"application/json"
         },
-
         body:JSON.stringify({
           name,
           email,
           message
         })
-
       }
     );
-
-    // Convert Response
 
     const result =
     await response.json();
 
-    // Success Message
+    showSuccess(result.message || "Success!");
 
-    showSuccess(result.message);
+    /* =========================
+       RESET FORM
+    ========================= */
 
-    // Reset Button
+    form.reset();
 
-    setTimeout(() => {
+    submitBtn.innerText =
+    "Send Message";
 
-      submitBtn.innerText =
-      "Send Message";
+    submitBtn.disabled = false;
 
-      submitBtn.disabled = false;
-
-    },3000);
+    /* =========================
+   SINGLE CLEAN RELOAD
+========================= */
+form.reset();
+showSuccess("Form Submitted Successfully");
 
   }catch(error){
 
     console.log(error);
 
-    showToast(
-      "Submission Failed"
-    );
+    showToast("Submission Failed");
 
     submitBtn.innerText =
     "Send Message";

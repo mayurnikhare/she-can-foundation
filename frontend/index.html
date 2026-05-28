@@ -111,63 +111,29 @@
 
       <form id="contactForm">
 
-        <!-- Name -->
+  <div class="input-box">
+    <input type="text" id="name" required>
+    <label>Name</label>
+  </div>
 
-        <div class="input-box">
+  <div class="input-box">
+    <input type="email" id="email" required>
+    <label>Email</label>
+  </div>
 
-          <input
-            type="text"
-            id="name"
-            required
-          >
+  <div class="input-box">
+    <textarea id="message" required></textarea>
+    <label>Message</label>
+  </div>
 
-          <label>Name</label>
+  <!-- IMPORTANT: type="submit" -->
+  <button type="submit" id="submitBtn">
+    Send Message
+  </button>
 
-        </div>
+  <p id="successMessage"></p>
 
-        <!-- Email -->
-
-        <div class="input-box">
-
-          <input
-            type="text"
-            id="email"
-            required
-          >
-
-          <label>Email</label>
-
-        </div>
-
-        <!-- Message -->
-
-        <div class="input-box">
-
-          <textarea
-            id="message"
-            required
-          ></textarea>
-
-          <label>Message</label>
-
-        </div>
-
-        <!-- Submit Button -->
-
-        <button
-          type="submit"
-          id="submitBtn"
-        >
-
-          Send Message
-
-        </button>
-
-        <!-- Success Message -->
-
-        <p id="successMessage"></p>
-
-      </form>
+</form>
 
     </div>
 
