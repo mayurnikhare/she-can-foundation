@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Admin Dashboard</title>
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="admin.css">
+
+  <!-- Google Font -->
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+</head>
+
+<body>
+
+  <!-- =========================
+       Login Protection
+  ========================== -->
+
+  <script>
+
+    const isLoggedIn =
+    localStorage.getItem("isAdminLoggedIn");
+
+    if(isLoggedIn !== "true"){
+
+      window.location.href = "login.html";
+
+    }
+
+  </script>
+
+  <!-- =========================
+     Header
+========================= -->
+
+<header class="dashboard-header">
+
+  <div class="header-left">
+
+    <h1>Admin Dashboard</h1>
+
+    <p>
+      View all submitted contact messages
+    </p>
+
+  </div>
+
+  <!-- Logout Button -->
+
+  <button id="logoutBtn">
+
+    Logout
+
+  </button>
+
+</header>
+
+  <!-- =========================
+       Table Section
+  ========================== -->
+
+  <section class="table-section">
+
+    <div class="table-container">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Name</th>
+
+            <th>Email</th>
+
+            <th>Message</th>
+
+            <th>Date & Time</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody id="tableBody">
+
+          <!-- Dynamic Data -->
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       Logout Script
+  ========================== -->
+
+  <script>
+
+    const logoutBtn =
+    document.getElementById("logoutBtn");
+
+    logoutBtn.addEventListener("click", () => {
+
+      localStorage.removeItem(
+        "isAdminLoggedIn"
+      );
+
+      window.location.href = "login.html";
+
+    });
+
+  </script>
+
+  <!-- =========================
+       Admin JS
+  ========================== -->
+
+  <script src="admin.js"></script>
+
+</body>
+
+</html>

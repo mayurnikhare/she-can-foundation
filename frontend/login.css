@@ -1,0 +1,349 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+/* =========================
+   Body
+========================= */
+
+body{
+
+  min-height:100vh;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  overflow:hidden;
+
+  position:relative;
+
+  background:linear-gradient(
+    135deg,
+    #ff0080,
+    #7928ca,
+    #2afadf
+  );
+
+  background-size:400% 400%;
+
+  animation:bgAnimation 12s ease infinite;
+
+}
+
+/* =========================
+   Background Animation
+========================= */
+
+@keyframes bgAnimation{
+
+  0%{
+    background-position:0% 50%;
+  }
+
+  50%{
+    background-position:100% 50%;
+  }
+
+  100%{
+    background-position:0% 50%;
+  }
+
+}
+
+/* =========================
+   Background Circles
+========================= */
+
+.bg-circle{
+
+  position:absolute;
+
+  border-radius:50%;
+
+  filter:blur(90px);
+
+  z-index:-1;
+
+}
+
+.one{
+
+  width:300px;
+  height:300px;
+
+  background:#ff4ecd;
+
+  top:-100px;
+  left:-100px;
+
+}
+
+.two{
+
+  width:350px;
+  height:350px;
+
+  background:#00f7ff;
+
+  bottom:-120px;
+  right:-120px;
+
+}
+
+/* =========================
+   Login Container
+========================= */
+
+.login-container{
+
+  width:100%;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  padding:20px;
+
+}
+
+/* =========================
+   Login Box
+========================= */
+
+.login-box{
+
+  width:100%;
+
+  max-width:420px;
+
+  padding:45px 35px;
+
+  border-radius:30px;
+
+  background:rgba(255,255,255,0.15);
+
+  backdrop-filter:blur(18px);
+
+  border:1px solid rgba(255,255,255,0.18);
+
+  box-shadow:0 15px 40px rgba(0,0,0,0.25);
+
+  animation:slideUp 1s ease;
+
+}
+
+/* =========================
+   Heading
+========================= */
+
+.login-box h1{
+
+  text-align:center;
+
+  font-size:38px;
+
+  color:white;
+
+  margin-bottom:10px;
+
+}
+
+.login-box p{
+
+  text-align:center;
+
+  color:rgba(255,255,255,0.85);
+
+  margin-bottom:30px;
+
+}
+
+/* =========================
+   Input Box
+========================= */
+
+.input-box{
+
+  position:relative;
+
+  margin-bottom:28px;
+
+}
+
+/* Inputs */
+
+.input-box input{
+
+  width:100%;
+
+  padding:16px;
+
+  border:none;
+
+  outline:none;
+
+  border-radius:14px;
+
+  background:rgba(255,255,255,0.22);
+
+  color:white;
+
+  font-size:16px;
+
+  transition:0.3s ease;
+
+}
+
+.input-box input:focus{
+
+  background:rgba(255,255,255,0.3);
+
+}
+
+/* Labels */
+
+.input-box label{
+
+  position:absolute;
+
+  top:16px;
+  left:16px;
+
+  color:white;
+
+  pointer-events:none;
+
+  transition:0.3s ease;
+
+}
+
+/* Floating Labels */
+
+.input-box input:focus + label,
+.input-box input:valid + label{
+
+  top:-10px;
+
+  left:12px;
+
+  font-size:13px;
+
+  padding:2px 8px;
+
+  border-radius:8px;
+
+  background:white;
+
+  color:#7928ca;
+
+}
+
+/* =========================
+   Login Button
+========================= */
+
+#loginBtn{
+
+  width:100%;
+
+  padding:16px;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:linear-gradient(
+    135deg,
+    #ff0080,
+    #7928ca
+  );
+
+  color:white;
+
+  font-size:18px;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:0.3s ease;
+
+}
+
+#loginBtn:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.25);
+
+}
+
+/* =========================
+   Error Message
+========================= */
+
+#errorMessage{
+
+  margin-top:18px;
+
+  text-align:center;
+
+  color:#ff4d4d;
+
+  font-size:15px;
+
+  font-weight:500;
+
+}
+
+/* =========================
+   Animation
+========================= */
+
+@keyframes slideUp{
+
+  from{
+
+    opacity:0;
+
+    transform:translateY(60px);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+  }
+
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media(max-width:500px){
+
+  .login-box{
+
+    padding:35px 22px;
+
+  }
+
+  .login-box h1{
+
+    font-size:30px;
+
+  }
+
+}
