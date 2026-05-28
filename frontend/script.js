@@ -201,7 +201,7 @@ form.addEventListener("submit", async (e) => {
     // API Request
 
     const response = await fetch(
-      "http://localhost:5000/api/contact",
+      "https://she-can-foundation-1-38gf.onrender.com/api/contact",
       {
 
         method:"POST",

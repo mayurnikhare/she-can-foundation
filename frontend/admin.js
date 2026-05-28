@@ -29,7 +29,7 @@ async function fetchMessages(){
     // Fetch API
 
     const response = await fetch(
-      "http://localhost:5000/api/messages"
+      "https://she-can-foundation-1-38gf.onrender.com/api/messages"
     );
 
     // Convert Data
